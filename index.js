@@ -1,14 +1,12 @@
 const $display = document.getElementById("display")
 const $btn = document.querySelectorAll(".btn");
 const btn1 = document.getElementById("uno");
-let key = 0;
+
 let action = "";
 let num = "";
 let contInt = 0;
 let int1 = 0;
 let int2 = 0;
-let inter = 0;
-let calculo = "";
 let resultado = 0;
 
 const add = ()=>{
@@ -27,34 +25,35 @@ const iterador2= ()=>{
     num = "";
 }
 
-const contadorIntervalos = () =>{
-    if(contInt == 0){
-        contInt = 1;
-    }else {
-        contInt = 0;
-    }
+
+const iterador3= ()=>{
+    int2 = Number(num);
+    console.log("int2 " + int2)
 }
 
-const resultados = () =>{
-    if(action== "+"){
-    resultado = int1 + int2;
-    }
-    if(action== "-"){
-    resultado = int1 - int2;
-    }
-    if(action== "*"){
-    resultado = int1 * int2;
-    }
-    if(action== "/"){
-    resultado = int1 / int2;
-    }
+const mostrarResultado = () =>{
+    if(action=== "+"){
+        resultado = int1 + int2;
+        int1 = resultado
+        }
 
-    $display.innerHTML=resultado
-    console.log(contInt)
-    int1 = resultado
-    contInt=1;
+        if(action=== "-"){
+        resultado = int1 - int2;
+        int1 = resultado
+        }
+
+        if(action=== "*"){
+        resultado = int1*int2;
+        int1 = resultado
+        }
+
+        if(action=== "/"){
+        resultado = int1/int2;
+        int1 = resultado
+        }
 }
 
+//-----------------LISTENERS----------------
 
 $btn.forEach((e)=>{
     e.addEventListener("click",(el)=>{
@@ -127,9 +126,11 @@ $btn.forEach((e)=>{
                 iterador1()
             } else{
                 iterador2()
+                mostrarResultado()
+                $display.innerHTML=resultado
             }
             action = "+";
-            contadorIntervalos()
+            contInt = 1
         }
 
         if(el.target.matches("#resta")){
@@ -137,9 +138,11 @@ $btn.forEach((e)=>{
                 iterador1()
             } else{
                 iterador2()
+                mostrarResultado()
+                $display.innerHTML=resultado
             }
             action = "-";
-            contadorIntervalos()
+            contInt = 1;
         }
         
         if(el.target.matches("#multiplicacion")){
@@ -147,23 +150,41 @@ $btn.forEach((e)=>{
                 iterador1()
             } else{
                 iterador2()
+                mostrarResultado()
+                $display.innerHTML=resultado
             }
             action = "*";
-            contadorIntervalos()
+            contInt=1;
         }
+
         if(el.target.matches("#division")){
             if(contInt == 0){
                 iterador1()
             } else{
                 iterador2()
+                mostrarResultado()
+                $display.innerHTML=resultado
             }
             action = "/";
-            contadorIntervalos()
+            contInt=1;
         }
 
         if(el.target.matches("#igual")){
-            iterador2()
-            resultados();
+            if(action == "/" || action == "*" ){
+                iterador3()
+                console.log("HOLA")
+                mostrarResultado()
+                $display.innerHTML=resultado
+            } else{
+                iterador2()
+                mostrarResultado()
+                $display.innerHTML=resultado
+            }
+            contInt=1;
         }
     })
+})
+
+document.addEventListener("click",()=>{
+    console.log(action)
 })
