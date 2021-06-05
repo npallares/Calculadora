@@ -27,7 +27,7 @@ const iterador2= ()=>{
 
 
 const iterador3= ()=>{
-    int2 = Number(num);
+    resultado = Number(num);
     console.log("int2 " + int2)
 }
 
@@ -171,7 +171,7 @@ $btn.forEach((e)=>{
 
         if(el.target.matches("#igual")){
             if(action == "/" || action == "*" ){
-                iterador3()
+                iterador2()
                 console.log("HOLA")
                 mostrarResultado()
                 $display.innerHTML=resultado
