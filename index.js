@@ -4,52 +4,55 @@ const btn1 = document.getElementById("uno");
 let key = 0;
 let action = "";
 let num = "";
-let cont = 0;
+let contInt = 0;
 let int1 = 0;
 let int2 = 0;
 let inter = 0;
 let calculo = "";
-let cuenta = [0,0,0,0,0,0,0,0,0,0,0];
 let resultado = 0;
 
 const add = ()=>{
     num = `${num}` + `${key}`;
 }
 
-const next = ()=>{
-    int1 = num 
-    console.log(int1)
+const iterador1 = ()=>{
+    int1 = Number(num)
+    console.log("int1 " + int1)
     num = "";
 }
 
-const next2 = ()=>{
-    /* console.log(num) */
-    int2 = num ;
-    /* console.log(int2) */
+const iterador2= ()=>{
+    int2 = Number(num) ;
+    console.log("int2 " + int2)
     num = "";
 }
 
-const dividir = () =>{
-    resultado = Number(int1)/Number(int2);
-    $display.innerHTML=resultado;
-    int1 = resultado;
-    num = "";
+const contadorIntervalos = () =>{
+    if(contInt == 0){
+        contInt = 1;
+    }else {
+        contInt = 0;
+    }
 }
 
-const sumar = () =>{
-    console.log(int1)
-    console.log(int2)
-    resultado = Number(int1) + Number(int2);
-    console.log(resultado)
-    $display.innerHTML=resultado;
-    int1 = resultado;
-    num = "";
-}
+const resultados = () =>{
+    if(action== "+"){
+    resultado = int1 + int2;
+    }
+    if(action== "-"){
+    resultado = int1 - int2;
+    }
+    if(action== "*"){
+    resultado = int1 * int2;
+    }
+    if(action== "/"){
+    resultado = int1 / int2;
+    }
 
-
-const cuentas =()=>{
-cuenta[cont] = num;
-console.log(cuenta)
+    $display.innerHTML=resultado
+    console.log(contInt)
+    int1 = resultado
+    contInt=1;
 }
 
 
@@ -119,31 +122,48 @@ $btn.forEach((e)=>{
 
         //*********************************/
 
-        if(el.target.matches("#division")){
-            cuentas()
-           if(cont == 0){
-            next();
-            cont ++;
-           } else{
-                  next2();
-                  dividir();
-                  cont ++;
-                 }
-        }
-
         if(el.target.matches("#suma")){
-            cuentas()
-            if(cont == 0){
-                next();
-                cont ++;
-            } else {
-                 next2();
-                 sumar();
-                 cont ++;
-                }   
+            if(contInt == 0){
+                iterador1()
+            } else{
+                iterador2()
+            }
+            action = "+";
+            contadorIntervalos()
         }
 
+        if(el.target.matches("#resta")){
+            if(contInt == 0){
+                iterador1()
+            } else{
+                iterador2()
+            }
+            action = "-";
+            contadorIntervalos()
+        }
+        
+        if(el.target.matches("#multiplicacion")){
+            if(contInt == 0){
+                iterador1()
+            } else{
+                iterador2()
+            }
+            action = "*";
+            contadorIntervalos()
+        }
+        if(el.target.matches("#division")){
+            if(contInt == 0){
+                iterador1()
+            } else{
+                iterador2()
+            }
+            action = "/";
+            contadorIntervalos()
+        }
+
+        if(el.target.matches("#igual")){
+            iterador2()
+            resultados();
+        }
     })
 })
-
-console.log(cuenta)
