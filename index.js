@@ -170,7 +170,12 @@ $btn.forEach((e)=>{
         }
 
         if(el.target.matches("#igual")){
-            if(action == "/" || action == "*" ){
+                iterador2()
+                mostrarResultado()
+                $display.innerHTML=resultado
+                num=resultado
+                contInt=0;
+            /* if(action == "/" || action == "*" ){
                 iterador2()
                 console.log("HOLA")
                 mostrarResultado()
@@ -180,11 +185,16 @@ $btn.forEach((e)=>{
                 mostrarResultado()
                 $display.innerHTML=resultado
             }
-            contInt=1;
+            contInt=1; */
         }
     })
 })
 
 document.addEventListener("click",()=>{
     console.log(action)
+    console.log("res "+resultado)
+    console.log("num "+num)
+    console.log("int1 "+int1)
+    console.log("int2 "+int2)
+    console.log("///////////")
 })
