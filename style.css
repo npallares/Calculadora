@@ -49,6 +49,15 @@ main{
     margin-right: 15px;
 }
 
+.disp-none{
+    display:none;
+}
+
+.msj-error{
+    margin-right: 3rem;
+    font-size: 1rem;
+}
+
 
 .btn{
     display: flex;

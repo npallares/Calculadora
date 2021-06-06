@@ -1,6 +1,6 @@
 const $display = document.getElementById("display")
 const $btn = document.querySelectorAll(".btn");
-const btn1 = document.getElementById("uno");
+const $error = document.getElementById("error");
 let indexReinicio=0;
 let action = "";
 let num = "";
@@ -35,7 +35,8 @@ const reinicio =() =>{
     /* console.log("HOLA")
     $btn[9].id="nulo";
     console.log($btn[11]) */
-
+    $display.classList.add("disp-none")
+    $error.classList.remove("disp-none")
     for (let i = 1; i != 19; i++) {
         $btn[i].id=`${$btn[i].id}-n`
         $btn[i].classList.add("nulo")
@@ -69,7 +70,7 @@ const mostrarResultado = () =>{
         if(action=== "/"){
             resultado = int1/int2;
             if(resultado == Infinity){
-                resultado="NO se"
+                resultado="No se puede"
                 int1=0
                 int2=0
                 key = "";
@@ -155,7 +156,8 @@ $btn.forEach((e)=>{
         }
         if(el.target.matches("#clear")){
             if(indexReinicio == 1){
-                
+             $display.classList.remove("disp-none")
+             $error.classList.add("disp-none")   
              for (let i = 1; i != 19; i++){
                 let newID = $btn[i].id
                 newID=newID.replace("-n","")
