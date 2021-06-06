@@ -68,6 +68,7 @@ main{
     border: 1px solid rgb(44, 44, 44,0.5);
 }
 
+
 .cero{
     width: calc(10rem + 2px);
 }
@@ -82,12 +83,26 @@ main{
 .bg-white{
     background-color: white;
 }
+
+.bg-white:hover{
+    background-color:rgb(216, 216, 216);
+}
+
 .bg-grey{
     background-color: rgb(194, 194, 194);
 }
+
+.bg-grey:hover{
+    background-color:rgba(194, 194, 194, 0.568);
+}
+
 .bg-blue{
     background-color: rgb(40, 104, 177);
     color: white;
+}
+
+.bg-blue:hover{
+    background-color:rgba(40, 104, 177, 0.74);
 }
 
 .board{
@@ -101,6 +116,10 @@ main{
 .nulo{
     background-color: white;
     color: rgb(206, 206, 206);
+}
+
+.nulo:hover{
+    background-color:white;
 }
 
 .borrar{
