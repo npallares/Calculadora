@@ -1,7 +1,7 @@
 const $display = document.getElementById("display")
 const $btn = document.querySelectorAll(".btn");
 const btn1 = document.getElementById("uno");
-
+let indexReinicio=0;
 let action = "";
 let num = "";
 let contInt = 0;
@@ -31,6 +31,25 @@ const iterador3= ()=>{
     console.log("int2 " + int2)
 }
 
+const reinicio =() =>{
+    /* console.log("HOLA")
+    $btn[9].id="nulo";
+    console.log($btn[11]) */
+
+    for (let i = 1; i != 19; i++) {
+        $btn[i].id=`${$btn[i].id}-n`
+        $btn[i].classList.add("nulo")
+        console.log($btn[i].id)
+        indexReinicio=1
+
+        /* $btn[i].id="nulo"
+        $btn[i].classList.add("nulo")
+        console.log($btn[i])
+        indexReinicio=1 */
+    }
+}
+
+
 const mostrarResultado = () =>{
     if(action=== "+"){
         resultado = int1 + int2;
@@ -48,11 +67,21 @@ const mostrarResultado = () =>{
         }
 
         if(action=== "/"){
-        resultado = int1/int2;
-        int1 = resultado
+            resultado = int1/int2;
+            if(resultado == Infinity){
+                resultado="NO se"
+                int1=0
+                int2=0
+                key = "";
+                num=0
+                add()
+                contInt = 0;
+                reinicio()
+            }else {
+                    int1 = resultado 
+                    }
         }
 }
-
 //-----------------LISTENERS----------------
 
 $btn.forEach((e)=>{
@@ -118,6 +147,35 @@ $btn.forEach((e)=>{
             add()
             $display.innerHTML=num
         }
+        if(el.target.matches("#punto")){
+           /*  console.log("0"); */
+            key = ".";
+            add()
+            $display.innerHTML=num
+        }
+        if(el.target.matches("#clear")){
+            if(indexReinicio == 1){
+                
+             for (let i = 1; i != 19; i++){
+                let newID = $btn[i].id
+                newID=newID.replace("-n","")
+                $btn[i].id=newID;
+                $btn[i].classList.remove("nulo")
+                indexReinicio=0
+
+             }
+
+            }
+             int1=0
+             int2=0
+             key = "";
+             num=""
+             add()
+             contInt = 0;
+             $display.innerHTML=num
+
+         }
+ 
 
         //*********************************/
 
@@ -175,26 +233,16 @@ $btn.forEach((e)=>{
                 $display.innerHTML=resultado
                 num=resultado
                 contInt=0;
-            /* if(action == "/" || action == "*" ){
-                iterador2()
-                console.log("HOLA")
-                mostrarResultado()
-                $display.innerHTML=resultado
-            } else{
-                iterador2()
-                mostrarResultado()
-                $display.innerHTML=resultado
-            }
-            contInt=1; */
         }
     })
 })
 
 document.addEventListener("click",()=>{
-    console.log(action)
+    /* console.log(action)
     console.log("res "+resultado)
     console.log("num "+num)
     console.log("int1 "+int1)
     console.log("int2 "+int2)
-    console.log("///////////")
+    console.log("///////////") */
+    
 })

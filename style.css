@@ -49,6 +49,7 @@ main{
     margin-right: 15px;
 }
 
+
 .btn{
     display: flex;
     justify-content: center;
@@ -86,4 +87,9 @@ main{
     border: 0px solid black;
     border-radius: 10px;
     box-shadow: -5px 5px 15px rgb(189, 189, 189);
+}
+
+.nulo{
+    background-color: white;
+    color: rgb(206, 206, 206);
 }
