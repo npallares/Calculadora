@@ -13,16 +13,6 @@ const add = ()=>{
     num = `${num}` + `${key}`;
 }
 
-const borrar = () =>{
-    let borrar = 1;
-    let parsialNum = 0;
-    let parsial = num;
-    parsial = parsial.toString();
-    parsialNum = parsial.length-1;
-    parsial=Number(parsial.substring(0,parsialNum));
-    num=parsial;
-}
-
 const iterador1 = ()=>{
     int1 = Number(num);
     num = "";
@@ -82,6 +72,27 @@ const mostrarResultado = () =>{
             parcial=parcial.substring(0,11);
             resultado = parcial;
         }
+}
+
+const borrar = () =>{
+    let parsialNum = 0;
+    let parsial = num;
+    parsial = parsial.toString();
+    parsialNum = parsial.length-1;
+    parsial=Number(parsial.substring(0,parsialNum));
+    num=parsial;
+}
+
+const masmenos = () => {
+    let parsial = num
+    parsial=parsial.toString();
+    if (parsial.includes("-")){ 
+        parsial=`${parsial}`;
+    } else {
+        parsial=`-${parsial}`;
+    }
+    num=Number(parsial) 
+    
 }
 //-----------------LISTENERS----------------
 
@@ -176,9 +187,15 @@ $btn.forEach((e)=>{
          }
          
          if(el.target.matches("#borrar")){
-             console.log("Borrar");
              borrar();
              $display.innerHTML=num;
+         }
+
+         if(el.target.matches("#masmenos")){
+             if(num != 0){
+             masmenos();
+             $display.innerHTML=num;
+             }
          }
 
         //*********************************/
