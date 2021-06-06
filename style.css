@@ -102,3 +102,7 @@ main{
     background-color: white;
     color: rgb(206, 206, 206);
 }
+
+.borrar{
+    font-size: 2rem;
+}
