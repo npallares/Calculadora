@@ -15,38 +15,22 @@ const add = ()=>{
 
 const iterador1 = ()=>{
     int1 = Number(num)
-    console.log("int1 " + int1)
     num = "";
 }
 
 const iterador2= ()=>{
     int2 = Number(num) ;
-    console.log("int2 " + int2)
     num = "";
 }
 
-
-const iterador3= ()=>{
-    resultado = Number(num);
-    console.log("int2 " + int2)
-}
-
 const reinicio =() =>{
-    /* console.log("HOLA")
-    $btn[9].id="nulo";
-    console.log($btn[11]) */
     $display.classList.add("disp-none")
     $error.classList.remove("disp-none")
     for (let i = 1; i != 19; i++) {
         $btn[i].id=`${$btn[i].id}-n`
         $btn[i].classList.add("nulo")
-        console.log($btn[i].id)
+        /* console.log($btn[i].id) */
         indexReinicio=1
-
-        /* $btn[i].id="nulo"
-        $btn[i].classList.add("nulo")
-        console.log($btn[i])
-        indexReinicio=1 */
     }
 }
 
@@ -81,6 +65,12 @@ const mostrarResultado = () =>{
             }else {
                     int1 = resultado 
                     }
+        }
+
+        let parcial = resultado.toString()
+        if(parcial.length > 11){
+            parcial=parcial.substring(0,11)
+            resultado = parcial
         }
 }
 //-----------------LISTENERS----------------
@@ -164,10 +154,9 @@ $btn.forEach((e)=>{
                 $btn[i].id=newID;
                 $btn[i].classList.remove("nulo")
                 indexReinicio=0
-
              }
-
             }
+
              int1=0
              int2=0
              key = "";
